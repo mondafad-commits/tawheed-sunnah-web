@@ -2,23 +2,28 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>التوحيد والسنة</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f4f6f3;color:#24352c}
 header{background:#164b38;color:white;text-align:center;padding:30px 15px}
-header h1{margin:0 0 10px}
-header p{margin:0}
-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;padding:15px;background:#fff;position:sticky;top:0}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;padding:15px;background:white;position:sticky;top:0}
 button{cursor:pointer;border:0;border-radius:8px;padding:12px 17px;background:#e4eee8;color:#164b38;font-size:15px;font-weight:bold}
 button:hover,.active{background:#164b38;color:white}
 main{max-width:900px;margin:25px auto;padding:15px}
 .card{background:white;padding:22px;margin-bottom:15px;border-radius:12px;box-shadow:0 2px 9px #0001}
-.card h2{color:#176044}
+h2{color:#176044}
 a{color:#176044;font-weight:bold}
-.hidden{display:none}
+.hidden{display:none!important}
+input,textarea,select{display:block;width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:7px;font-size:16px}
+textarea{min-height:90px}
 footer{text-align:center;padding:25px;background:#164b38;color:white;margin-top:40px}
+footer button{background:#e4eee8}
+.notice{padding:12px;background:#edf5ef;border-radius:8px;margin:10px 0}
+.item{border-bottom:1px solid #ddd;padding:15px 0}
+.item button{margin:5px}
+.danger{background:#a52b2b;color:white}
 </style>
 </head>
 <body>
@@ -38,77 +43,354 @@ footer{text-align:center;padding:25px;background:#164b38;color:white;margin-top:
 </nav>
 
 <main>
-
 <section id="home">
 <div class="card">
 <h2>مرحباً بكم في موقع التوحيد والسنة</h2>
-<p>منصة إسلامية تهدف إلى نشر القرآن الكريم والعلم الشرعي الصحيح، والتعريف بالتوحيد والسنة النبوية وأقوال العلماء.</p>
-<p>اختر أحد الأقسام من القائمة أعلاه للانتقال إليه.</p>
+<p>منصة لنشر القرآن الكريم والعلم الشرعي والتوحيد والسنة النبوية وأقوال العلماء.</p>
+<p>نسأل الله أن ينفع بهذا العمل.</p>
 </div>
 </section>
 
 <section id="quran" class="hidden">
 <div class="card">
 <h2>القرآن الكريم</h2>
-<p>استمع إلى القرآن الكريم واقرأ السور من خلال المصادر التالية:</p>
-<p><a href="https://quran.com/ar" target="_blank">القرآن الكريم - قراءة واستماع</a></p>
-<p><a href="https://mp3quran.net/ar" target="_blank">إذاعة القرآن الكريم والتلاوات</a></p>
+<p><a href="https://quran.com/ar" target="_blank">قراءة القرآن الكريم</a></p>
+<p><a href="https://mp3quran.net/ar" target="_blank">القرآن الكريم والتلاوات</a></p>
 </div>
+<div id="quranItems"></div>
 </section>
 
 <section id="tawheed" class="hidden">
 <div class="card">
 <h2>التوحيد والعقيدة</h2>
-<p>تعلم توحيد الله تعالى، ومعرفة أصول العقيدة الإسلامية وأركان الإيمان.</p>
-<p><a href="https://islamhouse.com/ar/" target="_blank">مكتبة الإسلام هاوس للدروس والكتب</a></p>
+<p>تعلم توحيد الله تعالى وأصول العقيدة الإسلامية.</p>
+<p><a href="https://islamhouse.com/ar/" target="_blank">مكتبة الإسلام هاوس</a></p>
 </div>
+<div id="tawheedItems"></div>
 </section>
 
 <section id="sunnah" class="hidden">
 <div class="card">
 <h2>السنة النبوية والحديث</h2>
-<p>تعرف على أحاديث النبي ﷺ وشروحها ومصادر تخريجها.</p>
 <p><a href="https://dorar.net/" target="_blank">الموسوعة الحديثية - الدرر السنية</a></p>
 </div>
+<div id="sunnahItems"></div>
 </section>
 
 <section id="lectures" class="hidden">
 <div class="card">
 <h2>المحاضرات والدروس</h2>
-<p>قسم مخصص للدروس والمحاضرات العلمية النافعة.</p>
-<p><a href="https://islamhouse.com/ar/" target="_blank">الاستماع والاطلاع على المواد العلمية</a></p>
+<p>مواد علمية ومحاضرات نافعة.</p>
 </div>
+<div id="lecturesItems"></div>
 </section>
 
 <section id="scholars" class="hidden">
 <div class="card">
 <h2>العلماء وفتاواهم</h2>
-<p>مصادر علمية للاستفادة من فتاوى العلماء ودروسهم المنشورة.</p>
 <p><a href="https://binbaz.org.sa/" target="_blank">موقع الشيخ ابن باز</a></p>
 <p><a href="https://www.islamweb.net/ar/" target="_blank">إسلام ويب</a></p>
 </div>
+<div id="scholarsItems"></div>
 </section>
 
+<section id="adminPanel" class="hidden">
+<div class="card">
+<h2>لوحة تحكم المدير</h2>
+<p id="adminEmail"></p>
+<div class="notice">أضف مادة جديدة أو عدّل المواد الموجودة.</div>
+
+<form id="contentForm">
+<label>القسم</label>
+<select id="category" required>
+<option value="quran">القرآن الكريم</option>
+<option value="tawheed">التوحيد والعقيدة</option>
+<option value="sunnah">السنة النبوية</option>
+<option value="lectures">المحاضرات والدروس</option>
+<option value="scholars">العلماء وفتاواهم</option>
+</select>
+
+<label>عنوان المادة</label>
+<input id="title" required maxlength="150" placeholder="اكتب عنوان المادة">
+
+<label>وصف المادة</label>
+<textarea id="description" maxlength="2000" placeholder="اكتب وصفاً مختصراً"></textarea>
+
+<label>رابط المادة (اختياري)</label>
+<input id="url" type="url" placeholder="https://example.com">
+
+<button type="submit" id="saveButton">إضافة المادة</button>
+<button type="button" onclick="resetForm()">إلغاء التعديل</button>
+</form>
+
+<h2>المواد المنشورة</h2>
+<div id="adminItems">جارٍ تحميل المواد...</div>
+<button onclick="logout()" class="danger">تسجيل الخروج</button>
+</div>
+</section>
+
+<section id="loginPanel" class="hidden">
+<div class="card">
+<h2>دخول المدير</h2>
+<p>هذه الصفحة مخصصة لإدارة الموقع.</p>
+<form id="loginForm">
+<input id="email" type="email" required placeholder="البريد الإلكتروني">
+<input id="password" type="password" required placeholder="كلمة المرور">
+<button type="submit">تسجيل الدخول</button>
+</form>
+<p id="loginMessage"></p>
+<button onclick="closeLogin()">رجوع</button>
+</div>
+</section>
 </main>
 
 <footer>
 <p>موقع التوحيد والسنة</p>
 <p>نسأل الله أن ينفع به ويجعله خالصاً لوجهه الكريم</p>
+<button onclick="openLogin()">دخول المدير</button>
 </footer>
 
-<script>
-function showPage(id,button){
-document.querySelectorAll('main section').forEach(function(section){
-section.classList.add('hidden');
-});
-document.getElementById(id).classList.remove('hidden');
-document.querySelectorAll('nav button').forEach(function(btn){
-btn.classList.remove('active');
-});
-button.classList.add('active');
-window.scrollTo(0,0);
-}
-</script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCHusL3ejK3ctrAazvJe3W3rQcg7sdCmOnzo",
+  authDomain: "tawheed-sunnah.firebaseapp.com",
+  projectId: "tawheed-sunnah",
+  storageBucket: "tawheed-sunnah.firebasestorage.app",
+  messagingSenderId: "389883395564",
+  appId: "1:389883395564:web:7f93ea4b222c0aa35994c9",
+  measurementId: "G-4JMYLZQSPG"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+let editingId = null;
+let adminUser = null;
+let contentCache = [];
+
+const categoryNames = {
+  quran:"القرآن الكريم",
+  tawheed:"التوحيد والعقيدة",
+  sunnah:"السنة النبوية",
+  lectures:"المحاضرات والدروس",
+  scholars:"العلماء وفتاواهم"
+};
+
+function showPage(id,button){
+  document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+  if(button) button.classList.add("active");
+  window.scrollTo(0,0);
+}
+
+function openLogin(){
+  showPage("loginPanel");
+}
+
+function closeLogin(){
+  showPage("home",document.querySelector("nav button"));
+}
+
+function resetForm(){
+  editingId=null;
+  document.getElementById("contentForm").reset();
+  document.getElementById("saveButton").textContent="إضافة المادة";
+}
+
+function safeLink(url){
+  try{
+    const u=new URL(url);
+    return u.protocol==="https:" || u.protocol==="http:" ? u.href : "";
+  }catch(e){return "";}
+}
+
+function makeItem(item,admin=false){
+  const div=document.createElement("div");
+  div.className="card item";
+
+  const heading=document.createElement("h3");
+  heading.textContent=item.title || "بدون عنوان";
+  div.appendChild(heading);
+
+  const description=document.createElement("p");
+  description.textContent=item.description || "";
+  div.appendChild(description);
+
+  const link=safeLink(item.url || "");
+  if(link){
+    const a=document.createElement("a");
+    a.href=link;
+    a.target="_blank";
+    a.rel="noopener noreferrer";
+    a.textContent="فتح المادة";
+    div.appendChild(a);
+  }
+
+  if(admin){
+    const edit=document.createElement("button");
+    edit.textContent="تعديل";
+    edit.onclick=()=>editItem(item.id);
+    div.appendChild(edit);
+
+    const del=document.createElement("button");
+    del.textContent="حذف";
+    del.className="danger";
+    del.onclick=()=>deleteItem(item.id);
+    div.appendChild(del);
+  }
+  return div;
+}
+
+function renderContent(){
+  const categories=Object.keys(categoryNames);
+  categories.forEach(category=>{
+    const container=document.getElementById(category+"Items");
+    container.replaceChildren();
+    const items=contentCache.filter(x=>x.category===category);
+    items.forEach(item=>container.appendChild(makeItem(item)));
+  });
+}
+
+async function loadContent(){
+  try{
+    const snap=await db.collection("content").get();
+    contentCache=snap.docs.map(doc=>({id:doc.id,...doc.data()}));
+    contentCache.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
+    renderContent();
+    if(adminUser) renderAdminItems();
+  }catch(error){
+    console.error(error);
+    document.getElementById("lecturesItems").textContent="تعذر تحميل المواد حالياً.";
+  }
+}
+
+function renderAdminItems(){
+  const container=document.getElementById("adminItems");
+  container.replaceChildren();
+  if(contentCache.length===0){
+    container.textContent="لا توجد مواد منشورة حتى الآن.";
+    return;
+  }
+  contentCache.forEach(item=>{
+    const box=makeItem(item,true);
+    const category=document.createElement("p");
+    category.textContent="القسم: "+(categoryNames[item.category]||"غير محدد");
+    box.appendChild(category);
+    container.appendChild(box);
+  });
+}
+
+document.getElementById("loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const message=document.getElementById("loginMessage");
+  message.textContent="جارٍ التحقق من بيانات الدخول...";
+  try{
+    await auth.signInWithEmailAndPassword(
+      document.getElementById("email").value.trim(),
+      document.getElementById("password").value
+    );
+  }catch(error){
+    message.textContent="تعذر تسجيل الدخول. تحقق من البريد وكلمة المرور.";
+  }
+});
+
+auth.onAuthStateChanged(async user=>{
+  adminUser=null;
+  if(!user){
+    document.getElementById("adminPanel").classList.add("hidden");
+    return;
+  }
+
+  try{
+    const adminDoc=await db.collection("admins").doc(user.uid).get();
+    if(!adminDoc.exists || adminDoc.data().role!=="admin"){
+      await auth.signOut();
+      document.getElementById("loginMessage").textContent="هذا الحساب ليس لديه صلاحية المدير.";
+      return;
+    }
+
+    adminUser=user;
+    document.getElementById("adminEmail").textContent="مسجل الدخول: "+user.email;
+    document.getElementById("loginMessage").textContent="";
+    showPage("adminPanel");
+    await loadContent();
+  }catch(error){
+    document.getElementById("loginMessage").textContent="تعذر التحقق من صلاحيات المدير. راجع قواعد Firestore.";
+  }
+});
+
+document.getElementById("contentForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  if(!adminUser){
+    alert("يجب تسجيل دخول المدير أولاً.");
+    return;
+  }
+
+  const data={
+    category:document.getElementById("category").value,
+    title:document.getElementById("title").value.trim(),
+    description:document.getElementById("description").value.trim(),
+    url:document.getElementById("url").value.trim()
+  };
+
+  if(data.url && !safeLink(data.url)){
+    alert("الرابط غير صحيح. استخدم رابطاً يبدأ بـ https://");
+    return;
+  }
+
+  try{
+    if(editingId){
+      await db.collection("content").doc(editingId).update(data);
+      alert("تم تعديل المادة بنجاح.");
+    }else{
+      data.createdAt=firebase.firestore.FieldValue.serverTimestamp();
+      await db.collection("content").add(data);
+      alert("تمت إضافة المادة بنجاح.");
+    }
+    resetForm();
+    await loadContent();
+  }catch(error){
+    alert("لم تتم العملية. تحقق من الاتصال وصلاحيات قاعدة البيانات.");
+  }
+});
+
+function editItem(id){
+  const item=contentCache.find(x=>x.id===id);
+  if(!item)return;
+  editingId=id;
+  document.getElementById("category").value=item.category||"lectures";
+  document.getElementById("title").value=item.title||"";
+  document.getElementById("description").value=item.description||"";
+  document.getElementById("url").value=item.url||"";
+  document.getElementById("saveButton").textContent="حفظ التعديل";
+  window.scrollTo(0,0);
+}
+
+async function deleteItem(id){
+  if(!adminUser)return;
+  if(!confirm("هل تريد حذف هذه المادة نهائياً؟"))return;
+  try{
+    await db.collection("content").doc(id).delete();
+    await loadContent();
+    alert("تم حذف المادة.");
+  }catch(error){
+    alert("تعذر حذف المادة.");
+  }
+}
+
+async function logout(){
+  await auth.signOut();
+  resetForm();
+  showPage("home",document.querySelector("nav button"));
+}
+
+loadContent();
+</script>
 </body>
 </html>

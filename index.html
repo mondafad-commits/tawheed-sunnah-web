@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,61 +5,110 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>التوحيد والسنة</title>
 <style>
-body{margin:0;font-family:Tahoma,Arial;background:#f5f7f3;color:#24352b}
-header{background:#174b36;color:white;text-align:center;padding:30px 15px}
-header h1{margin:0;font-size:30px}
-nav{background:#103b2b;padding:14px;text-align:center}
-nav a{color:white;text-decoration:none;margin:8px;font-size:14px}
-.hero{text-align:center;padding:35px 15px;background:#e5eee6}
-.hero h2{color:#174b36}
-.container{max-width:900px;margin:auto;padding:15px}
-.card{background:white;padding:20px;margin:15px 0;border-radius:12px;box-shadow:0 2px 8px #ddd}
-.card h3{color:#176044}
-footer{background:#174b36;color:white;text-align:center;padding:20px;margin-top:30px}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6f3;color:#24352c}
+header{background:#164b38;color:white;text-align:center;padding:30px 15px}
+header h1{margin:0 0 10px}
+header p{margin:0}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;padding:15px;background:#fff;position:sticky;top:0}
+button{cursor:pointer;border:0;border-radius:8px;padding:12px 17px;background:#e4eee8;color:#164b38;font-size:15px;font-weight:bold}
+button:hover,.active{background:#164b38;color:white}
+main{max-width:900px;margin:25px auto;padding:15px}
+.card{background:white;padding:22px;margin-bottom:15px;border-radius:12px;box-shadow:0 2px 9px #0001}
+.card h2{color:#176044}
+a{color:#176044;font-weight:bold}
+.hidden{display:none}
+footer{text-align:center;padding:25px;background:#164b38;color:white;margin-top:40px}
 </style>
 </head>
 <body>
+
 <header>
 <h1>التوحيد والسنة</h1>
-<p>على منهج الكتاب والسنة بفهم سلف الأمة</p>
+<p>على منهج أهل السنة والجماعة</p>
 </header>
+
 <nav>
-<a href="#quran">القرآن الكريم</a>
-<a href="#tawheed">التوحيد</a>
-<a href="#sunnah">السنة النبوية</a>
-<a href="#lectures">المحاضرات</a>
-<a href="#scholars">العلماء</a>
+<button class="active" onclick="showPage('home',this)">الرئيسية</button>
+<button onclick="showPage('quran',this)">القرآن الكريم</button>
+<button onclick="showPage('tawheed',this)">التوحيد</button>
+<button onclick="showPage('sunnah',this)">السنة النبوية</button>
+<button onclick="showPage('lectures',this)">المحاضرات</button>
+<button onclick="showPage('scholars',this)">العلماء</button>
 </nav>
-<div class="hero">
+
+<main>
+
+<section id="home">
+<div class="card">
 <h2>مرحباً بكم في موقع التوحيد والسنة</h2>
-<p>منصة إسلامية لنشر العلم الشرعي الصحيح ونشر الخير.</p>
+<p>منصة إسلامية تهدف إلى نشر القرآن الكريم والعلم الشرعي الصحيح، والتعريف بالتوحيد والسنة النبوية وأقوال العلماء.</p>
+<p>اختر أحد الأقسام من القائمة أعلاه للانتقال إليه.</p>
 </div>
-<div class="container">
-<section class="card" id="quran">
-<h3>📖 القرآن الكريم</h3>
-<p>تلاوات قرآنية وخشوع وتدبر في آيات الله.</p>
 </section>
-<section class="card" id="tawheed">
-<h3>☝️ التوحيد والعقيدة</h3>
-<p>تعلم أصول التوحيد والعقيدة الإسلامية.</p>
-</section>
-<section class="card" id="sunnah">
-<h3>🌙 السنة النبوية</h3>
-<p>أحاديث نبوية وفوائد من هدي النبي ﷺ.</p>
-</section>
-<section class="card" id="lectures">
-<h3>🎙️ المحاضرات والدروس</h3>
-<p>دروس ومحاضرات علمية صوتية ومرئية.</p>
-</section>
-<section class="card" id="scholars">
-<h3>📚 أقوال العلماء</h3>
-<p>فوائد وفتاوى ونقولات موثقة عن علماء أهل السنة.</p>
-</section>
+
+<section id="quran" class="hidden">
+<div class="card">
+<h2>القرآن الكريم</h2>
+<p>استمع إلى القرآن الكريم واقرأ السور من خلال المصادر التالية:</p>
+<p><a href="https://quran.com/ar" target="_blank">القرآن الكريم - قراءة واستماع</a></p>
+<p><a href="https://mp3quran.net/ar" target="_blank">إذاعة القرآن الكريم والتلاوات</a></p>
 </div>
+</section>
+
+<section id="tawheed" class="hidden">
+<div class="card">
+<h2>التوحيد والعقيدة</h2>
+<p>تعلم توحيد الله تعالى، ومعرفة أصول العقيدة الإسلامية وأركان الإيمان.</p>
+<p><a href="https://islamhouse.com/ar/" target="_blank">مكتبة الإسلام هاوس للدروس والكتب</a></p>
+</div>
+</section>
+
+<section id="sunnah" class="hidden">
+<div class="card">
+<h2>السنة النبوية والحديث</h2>
+<p>تعرف على أحاديث النبي ﷺ وشروحها ومصادر تخريجها.</p>
+<p><a href="https://dorar.net/" target="_blank">الموسوعة الحديثية - الدرر السنية</a></p>
+</div>
+</section>
+
+<section id="lectures" class="hidden">
+<div class="card">
+<h2>المحاضرات والدروس</h2>
+<p>قسم مخصص للدروس والمحاضرات العلمية النافعة.</p>
+<p><a href="https://islamhouse.com/ar/" target="_blank">الاستماع والاطلاع على المواد العلمية</a></p>
+</div>
+</section>
+
+<section id="scholars" class="hidden">
+<div class="card">
+<h2>العلماء وفتاواهم</h2>
+<p>مصادر علمية للاستفادة من فتاوى العلماء ودروسهم المنشورة.</p>
+<p><a href="https://binbaz.org.sa/" target="_blank">موقع الشيخ ابن باز</a></p>
+<p><a href="https://www.islamweb.net/ar/" target="_blank">إسلام ويب</a></p>
+</div>
+</section>
+
+</main>
+
 <footer>
 <p>موقع التوحيد والسنة</p>
-<p>نسأل الله أن ينفع به المسلمين</p>
+<p>نسأل الله أن ينفع به ويجعله خالصاً لوجهه الكريم</p>
 </footer>
+
+<script>
+function showPage(id,button){
+document.querySelectorAll('main section').forEach(function(section){
+section.classList.add('hidden');
+});
+document.getElementById(id).classList.remove('hidden');
+document.querySelectorAll('nav button').forEach(function(btn){
+btn.classList.remove('active');
+});
+button.classList.add('active');
+window.scrollTo(0,0);
+}
+</script>
+
 </body>
 </html>
-

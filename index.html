@@ -295,9 +295,10 @@ document.getElementById("loginForm").addEventListener("submit",async e=>{
       document.getElementById("email").value.trim(),
       document.getElementById("password").value
     );
-  }catch(error){
-    message.textContent="تعذر تسجيل الدخول. تحقق من البريد وكلمة المرور.";
-  }
+ }catch(error){
+  console.error("Firebase login error:", error);
+  message.textContent="رمز الخطأ: " + error.code;
+}
 });
 
 auth.onAuthStateChanged(async user=>{

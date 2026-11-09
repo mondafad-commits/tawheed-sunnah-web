@@ -43,6 +43,11 @@ footer button{background:#e4eee8}
 </nav>
 
 <main>
+<div class="card">
+<h2>🔎 البحث في الموقع</h2>
+<input type="search" id="searchInput" placeholder="ابحث عن القرآن أو درس أو محاضرة..." oninput="searchContent()">
+<div id="searchResults"></div>
+</div>
 <section id="home">
 <div class="card">
 <h2>مرحباً بكم في موقع التوحيد والسنة</h2>
@@ -256,7 +261,28 @@ function renderContent(){
     items.forEach(item=>container.appendChild(makeItem(item)));
   });
 }
+function searchContent(){
+  const query=document.getElementById("searchInput").value.trim().toLowerCase();
+  const results=document.getElementById("searchResults");
+  results.replaceChildren();
 
+  if(!query)return;
+
+  const matches=contentCache.filter(item=>
+    (item.title||"").toLowerCase().includes(query) ||
+    (item.description||"").toLowerCase().includes(query) ||
+    (categoryNames[item.category]||"").toLowerCase().includes(query)
+  );
+
+  if(matches.length===0){
+    results.textContent="لا توجد نتائج مطابقة.";
+    return;
+  }
+
+  matches.forEach(item=>{
+    results.appendChild(makeItem(item));
+  });
+}
 async function loadContent(){
   try{
     const snap=await db.collection("content").get();
